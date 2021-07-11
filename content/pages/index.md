@@ -3,6 +3,6 @@ template: 'index-template'
 title: 'Gatsby Starter Glass'
 ---
 
-#Hello World
+#I'm MILIARI Adnane, also known as Nano
 
-A minimal & beautiful gatsby personal blog starter with nice glassmorphism UI.
+I'm full-stack developer, currently specialising in development of web application with Java and PHP.

@@ -10,8 +10,11 @@ const Footer = () => {
         <SocialLinks />
 
         <FooterAttribution>
-          Hand-crafted with love by{' '}
-          <a href="https://twitter.com/yinkakun">Yinka Adedire</a>
+        {`${new Date().getFullYear()} `}
+          Built with
+          <a href="https://www.gatsbyjs.org" rel="noopener noreferrer" target="_blank"></a>
+          Open sourced on
+          <a href="https://github.com/miliariadnane/miliari.me" rel="noopener noreferrer" target="_blank"></a>
         </FooterAttribution>
       </FooterWrapper>
     </StyledFooter>

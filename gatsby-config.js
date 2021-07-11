@@ -1,27 +1,27 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Glass`,
+    title: `Nano MILIARI`,
     author: {
-      name: `Yinka Adedire`,
-      summary: `Self-taught front-end web dev. JAMStack.`,
+      name: `MILIARI Adnane`,
+      summary: `I'm MILIARI Adnane, also known as Nano`,
     },
-    description: `A minimal & beautiful gatsby personal blog starter with a nice glassmorphism UI.`,
+    description: `I'm full-stack developer, currently specialising in development of web application with Java and PHP`,
     siteUrl: `https://gatsbyglass.netlify.app`,
     social: {
-      twitter: `yinkakun`,
+      twitter: `adnane_miliari`,
     },
     socialLinks: [
       {
         name: 'github',
-        url: 'https://github.com',
+        url: 'https://github.com/miliariadnane',
       },
       {
         name: 'twitter',
-        url: 'https://twitter.com',
+        url: 'https://twitter.com/adnane_miliari',
       },
       {
-        name: 'instagram',
-        url: 'https://instagram.com',
+        name: 'linkedIn',
+        url: 'https://www.linkedin.com/in/adnane-miliari-776625114/',
       },
     ],
   },
