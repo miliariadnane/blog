@@ -16,4 +16,4 @@ visit http://localhost:8000
 
 ## Credit
 
-This is based on egghead blog starter : https://github.com/yinkakun/gatsby-starter-glass
+This is based on blog starter : https://github.com/yinkakun/gatsby-starter-glass
