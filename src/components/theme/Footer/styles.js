@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Container from '../../common/Container';
+import { Container } from '../../common/Container';
 
 export const StyledFooter = styled.footer`
   padding-top: var(--size-300);

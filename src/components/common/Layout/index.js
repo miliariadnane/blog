@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import SEO from '../SEO';
 import { Header, Footer } from '../../theme';
-import Container from '../Container';
+import { Container } from '../Container';
 import GlobalStyle from './global-styles';
 import { LayoutWrapper } from './styles';
 

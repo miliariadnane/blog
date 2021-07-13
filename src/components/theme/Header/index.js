@@ -10,7 +10,7 @@ import {
     StyledNavListItem
 } from './styles';
 
-const Header = () => {
+export const Header = () => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -47,8 +47,6 @@ const Header = () => {
     </StyledHeader>
   );
 };
-
-export default Header;
 
 const HeaderNavList = ({ children }) => {
     return (

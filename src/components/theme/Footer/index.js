@@ -6,7 +6,7 @@ import {
     FooterAttribution,
 } from './styles';
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <StyledFooter>
       <FooterWrapper>
@@ -15,13 +15,11 @@ const Footer = () => {
         <FooterAttribution>
         {`${new Date().getFullYear()} `}
           Built with
-          <a href="https://www.gatsbyjs.org" rel="noopener noreferrer" target="_blank"></a>
+          {/* <a href="https://www.gatsbyjs.org" rel="noopener noreferrer" target="_blank"></a> */}
           Open sourced on
-          <a href="https://github.com/miliariadnane/miliari.me" rel="noopener noreferrer" target="_blank"></a>
+          {/* <a href="https://github.com/miliariadnane/miliari.me" rel="noopener noreferrer" target="_blank"></a> */}
         </FooterAttribution>
       </FooterWrapper>
     </StyledFooter>
   );
 };
-
-export default Footer;
