@@ -1,8 +1,8 @@
 import React from 'react';
-import Layout from '../components/layout';
+import Layout from '../components/common/Layout';
 import { graphql } from 'gatsby';
-import styled from 'styled-components';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import styled from 'styled-components';
 
 const AboutTemplate = ({ data }) => {
   const { html, frontmatter } = data.markdownRemark;

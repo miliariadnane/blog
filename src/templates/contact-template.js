@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from '../components/layout';
+import Layout from '../components/common/Layout';
 import { graphql } from 'gatsby';
 import { useForm } from 'react-hook-form';
 import {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
-import Layout from '../components/layout';
-import PostList from '../components/post-list';
+import Layout from '../components/common/Layout';
+import PostList from '../components/common/postList';
 import styled from 'styled-components';
 
 const Blog = ({ data }) => {

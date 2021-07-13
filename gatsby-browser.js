@@ -1,1 +1,1 @@
-require('./src/components/prism-coldark-dark.css');
+require('./src/templates/prism-coldark-dark.css');

@@ -1,10 +1,9 @@
 import React, { Fragment } from 'react';
-import SEO from './seo';
-import Header from './header';
-import Footer from './footer';
-import Container from './container';
+import SEO from '../SEO';
+import { Header, Footer } from '../../theme';
+import Container from '../Container';
 import GlobalStyle from './global-styles';
-import styled from 'styled-components';
+import { LayoutWrapper } from './styles';
 
 const Layout = ({ children, title, description, socialImage = '' }) => {
   return (
@@ -23,18 +22,3 @@ const Layout = ({ children, title, description, socialImage = '' }) => {
 };
 
 export default Layout;
-
-const LayoutWrapper = styled.div`
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-
-  & main {
-    margin-top: auto;
-    margin-bottom: auto;
-  }
-
-  & footer {
-    margin-top: auto;
-  }
-`;
