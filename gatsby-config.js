@@ -3,7 +3,7 @@ module.exports = {
     title: `Nano MILIARI`,
     author: {
       name: `MILIARI Adnane`,
-      summary: `I'm MILIARI Adnane, also known as Nano`,
+      summary: `I'm MILIARI Adnane`,
     },
     description: `I'm full-stack developer, currently specialising in development of web application with Java and PHP`,
     siteUrl: `https://gatsbyglass.netlify.app`,

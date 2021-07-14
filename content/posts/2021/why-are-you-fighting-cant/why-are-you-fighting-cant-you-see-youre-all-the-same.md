@@ -10,7 +10,7 @@ You're young, you have your whole life ahead of you, and your anal cavity is sti
 
 ## Image
 
-![Rocket launch](/media/rocket.jpg)
+![Rocket launch](./rocket.jpg)
 
 ## Header
 
