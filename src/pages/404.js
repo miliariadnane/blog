@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from '../components/layout';
+import Layout from '../components/common/Layout';
 import { Ghost } from 'react-kawaii';
 import styled from 'styled-components';
 

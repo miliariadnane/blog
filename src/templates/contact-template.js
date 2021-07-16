@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from '../components/layout';
+import Layout from '../components/common/Layout';
 import { graphql } from 'gatsby';
 import { useForm } from 'react-hook-form';
 import {
@@ -168,7 +168,7 @@ const FormGroup = styled.div`
     font-family: inherit;
     padding: 0.25rem 0.5rem;
     border-radius: 4px;
-    background-color: #e4b8c7;
+    background-color: #d9e0ea
     border: 2px solid transparent;
   }
 

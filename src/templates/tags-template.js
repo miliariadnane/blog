@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
-import Layout from '../components/layout';
-import PostList from '../components/post-list';
-import StyledLink from '../components/styled-link';
+import Layout from '../components/common/Layout';
+import PostList from '../components/common/postList';
+import StyledLink from '../components/common/styledLink';
 import styled from 'styled-components';
 
 const TagsTemplate = ({ pageContext, data }) => {
@@ -15,7 +15,7 @@ const TagsTemplate = ({ pageContext, data }) => {
     <Layout title={title}>
       <TagsTemplateWrapper>
         <Title>
-          {totalCount} posts tagged "{tag}"
+          {totalCount} posts related to "{tag}"
         </Title>
         <Link
           css={`

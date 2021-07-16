@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Nano MILIARI`,
+    title: `MILIARI  |  Failure dsqdsq`,
     author: {
       name: `MILIARI Adnane`,
-      summary: `I'm MILIARI Adnane, also known as Nano`,
+      summary: `I'm MILIARI Adnane`,
     },
     description: `I'm full-stack developer, currently specialising in development of web application with Java and PHP`,
     siteUrl: `https://gatsbyglass.netlify.app`,

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
-import Layout from '../components/layout';
+import Layout from '../components/common/Layout';
+import Tags from '../components/common/tags';
 import styled from 'styled-components';
-import Tags from '../components/tags';
 
-const PostTemplate = ({ data }) => {
+const Post = ({ data }) => {
   const { frontmatter, excerpt, html } = data.markdownRemark;
   const prev = data.prev;
   const next = data.next;
@@ -46,7 +46,7 @@ const PostTemplate = ({ data }) => {
   );
 };
 
-export default PostTemplate;
+export default Post;
 
 const PostWrapper = styled.div`
   padding-top: var(--size-900);
