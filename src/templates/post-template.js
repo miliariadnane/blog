@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
-import Disqus from 'disqus-react';
+import { Disqus } from "gatsby-plugin-disqus";
 import Layout from '../components/common/Layout';
 import Tags from '../components/common/tags';
 import styled from 'styled-components';
@@ -9,13 +9,11 @@ const Post = ({ data }) => {
   const { frontmatter, excerpt, html } = data.markdownRemark;
   const prev = data.prev;
   const next = data.next;
-
-  const disqusShortName = 'https-miliari-me'
-  const disqusConfig = {
-    url: `https://miliari.netlify.app${frontmatter.path}`,
-    identifier: frontmatter.title.toString(),
+  
+  let disqusConfig = {
+    url: `https://miliari.netlify.app/${frontmatter.path}/`,
     title: frontmatter.title,
-  }
+  };
 
   return (
     <Layout
@@ -51,10 +49,8 @@ const Post = ({ data }) => {
         <Tags tags={frontmatter.tags} />
       </PostWrapper>
 
-      <Disqus.DiscussionEmbed
-        shortname={disqusShortName}
-        config={disqusConfig}
-      />
+      <Disqus config={disqusConfig} />
+
     </Layout>
   );
 };

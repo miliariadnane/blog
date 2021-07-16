@@ -6,7 +6,7 @@ module.exports = {
       summary: `I'm MILIARI Adnane`,
     },
     description: `I'm full-stack developer, currently specialising in development of web application with Java and PHP`,
-    siteUrl: `https://gatsbyglass.netlify.app`,
+    siteUrl: `https://miliari.netlify.app`,
     social: {
       twitter: `adnane_miliari`,
     },
@@ -158,6 +158,12 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/icon.png`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `miliari`,
       },
     },
     `gatsby-plugin-react-helmet`,
