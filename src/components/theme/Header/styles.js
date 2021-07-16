@@ -3,6 +3,8 @@ import { Container } from '../../common/Container';
 
 export const StyledHeader = styled.header`
 padding-top: var(--size-300);
+background: #d6e1e7;
+padding: 4px;
 `;
 
 export const HeaderWrapper = styled(Container)`

@@ -7,10 +7,12 @@ import {
     HeaderTitle,
     StyledNav,
     StyledNavList,
-    StyledNavListItem
+    StyledNavListItem,
+    StyledThemeBtn
 } from './styles';
 
 export const Header = () => {
+  
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -42,6 +44,7 @@ export const Header = () => {
           <HeaderNavListItem>
             <Link to="/contact">Contact</Link>
           </HeaderNavListItem>
+
         </HeaderNavList>
       </HeaderWrapper>
     </StyledHeader>

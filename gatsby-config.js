@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Nano MILIARI`,
+    title: `MILIARI  |  Failure dsqdsq`,
     author: {
       name: `MILIARI Adnane`,
       summary: `I'm MILIARI Adnane`,

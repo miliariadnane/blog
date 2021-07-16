@@ -20,3 +20,14 @@ export const FooterWrapper = styled(Container)`
   justify-content: space-between;
   align-items: center;
 `;
+
+export const Item = styled.img`
+  margin: 0 0.2rem;
+  ${({ img }) =>
+    img &&
+    `
+		position: relative;
+		top: .40rem;
+    display: inline;
+	`};
+`
