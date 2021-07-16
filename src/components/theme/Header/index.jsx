@@ -8,7 +8,6 @@ import {
     StyledNav,
     StyledNavList,
     StyledNavListItem,
-    StyledThemeBtn
 } from './styles';
 
 export const Header = () => {

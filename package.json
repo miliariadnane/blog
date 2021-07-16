@@ -6,6 +6,7 @@
   "author": "MILIARI Adnane <miliari.adnane@gmail.com>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.12.0",
+    "disqus-react": "^1.1.1",
     "gatsby": "^3.0.1",
     "gatsby-plugin-feed": "^3.0.0",
     "gatsby-plugin-google-fonts": "^1.0.1",

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
+import Disqus from 'disqus-react'
 import Layout from '../components/common/Layout';
 import Tags from '../components/common/tags';
 import styled from 'styled-components';
@@ -8,6 +9,13 @@ const Post = ({ data }) => {
   const { frontmatter, excerpt, html } = data.markdownRemark;
   const prev = data.prev;
   const next = data.next;
+
+  const disqusShortName = 'https-miliari-me'
+  const disqusConfig = {
+    url: `https://miliari.me${frontmatter.path}`,
+    identifier: frontmatter.title.toString(),
+    title: frontmatter.title,
+  }
 
   return (
     <Layout
@@ -42,6 +50,11 @@ const Post = ({ data }) => {
         </PostPagination>
         <Tags tags={frontmatter.tags} />
       </PostWrapper>
+
+      <Disqus.DiscussionEmbed
+        shortname={disqusShortName}
+        config={disqusConfig}
+      />
     </Layout>
   );
 };
