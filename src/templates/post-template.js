@@ -12,7 +12,7 @@ const Post = ({ data }) => {
 
   const disqusShortName = 'https-miliari-me'
   const disqusConfig = {
-    url: `https://miliari.me${frontmatter.path}`,
+    url: `https://miliari.netlify.app${frontmatter.path}`,
     identifier: frontmatter.title.toString(),
     title: frontmatter.title,
   }
