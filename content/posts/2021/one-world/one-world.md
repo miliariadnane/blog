@@ -9,7 +9,7 @@ The view of the earth from the moon fascinated me - a small disk, 240,000 mniles
 
 ## Image
 
-![Rocket launch](/media/rocket.jpg)
+![Rocket launch](./rocket.jpg)
 
 ## Header
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
-import Disqus from 'disqus-react'
+import Disqus from 'disqus-react';
 import Layout from '../components/common/Layout';
 import Tags from '../components/common/tags';
 import styled from 'styled-components';

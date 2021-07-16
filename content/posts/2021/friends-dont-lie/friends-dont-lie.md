@@ -14,7 +14,7 @@ Specifically how to build one? Yeah, I want a date with Bo Derek. We all want th
 
 ## Image
 
-![Rocket launch](/media/rocket.jpg)
+![Rocket launch](./rocket.jpg)
 
 ## Header
 
