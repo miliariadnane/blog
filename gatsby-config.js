@@ -1,14 +1,17 @@
 module.exports = {
   siteMetadata: {
-    title: `MILIARI  |  Failure dsqdsq`,
+    title: `MILIARI  |  Networking is about giving 🤝`,
     author: {
       name: `MILIARI Adnane`,
       summary: `I'm MILIARI Adnane`,
     },
     description: `I'm full-stack developer, currently specialising in development of web application with Java and PHP`,
-    siteUrl: `https://miliari.netlify.app`,
+    siteUrl: `https://miliari.me`,
     social: {
       twitter: `adnane_miliari`,
+      github: 'miliariadnane',
+      medium: 'miliari.adnane',
+      linkedIn: 'adnane-miliari-776625114',
     },
     socialLinks: [
       {

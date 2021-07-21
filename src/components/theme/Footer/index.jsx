@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import SocialLinks from '../../common/socialShare';
 import gatsbyIcon from '../../../assets/footer/gatsby.svg'
-import githubIcon from '../../../assets/github/github.svg'
+import githubIcon from '../../../assets/footer/github.svg'
 import {
     StyledFooter,
     FooterWrapper,

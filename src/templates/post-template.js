@@ -3,6 +3,7 @@ import { Link, graphql } from 'gatsby';
 import { Disqus } from "gatsby-plugin-disqus";
 import Layout from '../components/common/Layout';
 import Tags from '../components/common/tags';
+import Bio from '../components/common/Bio';
 import styled from 'styled-components';
 
 const Post = ({ data }) => {
@@ -11,7 +12,7 @@ const Post = ({ data }) => {
   const next = data.next;
   
   let disqusConfig = {
-    url: `https://miliari.netlify.app/${frontmatter.path}/`,
+    url: `https://miliari:me/${frontmatter.path}/`,
     title: frontmatter.title,
   };
 
@@ -47,6 +48,9 @@ const Post = ({ data }) => {
           )}
         </PostPagination>
         <Tags tags={frontmatter.tags} />
+
+        <CustomSeperator />
+        <Bio />
       </PostWrapper>
 
       <Disqus config={disqusConfig} />
@@ -181,6 +185,13 @@ const PostPagination = styled.nav`
     top: 0;
     bottom: 0;
   }
+`;
+
+const CustomSeperator = styled.hr`
+  margin: 64px;
+  background: linear-gradient(72deg, #291e95, #cc007a);
+  border: none;
+  height: 2px;
 `;
 
 export const pageQuery = graphql`
