@@ -12,7 +12,8 @@ const Post = ({ data }) => {
   const next = data.next;
   
   let disqusConfig = {
-    url: `https://miliari:me/${frontmatter.path}/`,
+    url: `https://miliari.me/${frontmatter.path}/`,
+    identifier: frontmatter.id,
     title: frontmatter.title,
   };
 
@@ -51,10 +52,9 @@ const Post = ({ data }) => {
 
         <CustomSeperator />
         <Bio />
+        <Disqus config={disqusConfig} />
+
       </PostWrapper>
-
-      <Disqus config={disqusConfig} />
-
     </Layout>
   );
 };
@@ -66,7 +66,7 @@ const PostWrapper = styled.div`
   padding-bottom: var(--size-900);
   margin-left: auto;
   margin-right: auto;
-  max-width: 70ch;
+  max-width: 80ch;
   word-wrap: break-word;
 `;
 

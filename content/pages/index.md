@@ -1,6 +1,6 @@
 ---
 template: 'index-template'
-title: 'Gatsby Starter Glass'
+title: ''
 ---
 
 #I'm MILIARI Adnane

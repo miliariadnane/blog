@@ -131,6 +131,7 @@ module.exports = {
                     fields {
                       slug
                     }
+                    id
                     frontmatter {
                       title
                       date
@@ -166,7 +167,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-disqus`,
       options: {
-        shortname: `miliari`,
+        shortname: `miliari-me`,
       },
     },
     `gatsby-plugin-react-helmet`,
