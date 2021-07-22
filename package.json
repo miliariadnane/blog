@@ -33,6 +33,7 @@
     "react-hook-form": "^6.15.4",
     "react-kawaii": "^0.17.0",
     "react-netlify-forms": "^1.2.0",
+    "react-share": "^4.4.0",
     "rsuite": "^4.10.2",
     "styled-components": "^5.2.1"
   },

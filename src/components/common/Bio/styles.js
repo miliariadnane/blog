@@ -9,6 +9,7 @@ margin-bottom: rhythm(2.5);
 export const WrapperBio = styled.div`
 display: flex;
 align-items: center;
+margin-bottom: 5%
 `;
 
 export const BioImg = styled(GatsbyImage)`

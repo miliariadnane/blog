@@ -4,10 +4,11 @@ import { Disqus } from "gatsby-plugin-disqus";
 import Layout from '../components/common/Layout';
 import Tags from '../components/common/tags';
 import Bio from '../components/common/Bio';
+import Share from '../components/common/share';
 import styled from 'styled-components';
 
 const Post = ({ data }) => {
-  const { frontmatter, excerpt, html } = data.markdownRemark;
+  const { frontmatter, excerpt, html, fields } = data.markdownRemark;
   const prev = data.prev;
   const next = data.next;
   
@@ -50,6 +51,11 @@ const Post = ({ data }) => {
         </PostPagination>
         <Tags tags={frontmatter.tags} />
 
+
+        <Share 
+          title={frontmatter.title}
+          path={fields.slug}
+        />  
         <CustomSeperator />
         <Bio />
         <Disqus config={disqusConfig} />
@@ -188,7 +194,7 @@ const PostPagination = styled.nav`
 `;
 
 const CustomSeperator = styled.hr`
-  margin: 64px;
+  margin: 30px;
   background: linear-gradient(72deg, #291e95, #cc007a);
   border: none;
   height: 2px;
@@ -199,6 +205,9 @@ export const pageQuery = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       excerpt(pruneLength: 160)
       html
+      fields {
+        slug
+      }
       frontmatter {
         title
         tags

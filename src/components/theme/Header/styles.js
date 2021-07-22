@@ -3,7 +3,7 @@ import { Container } from '../../common/Container';
 
 export const StyledHeader = styled.header`
 padding-top: var(--size-300);
-background: #d6e1e7;
+background: rgb(255 255 255 / 30%);
 padding: 4px;
 `;
 

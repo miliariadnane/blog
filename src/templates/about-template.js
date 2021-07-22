@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from '../components/common/Layout';
+import SocialBar from '../components/common/socialBar';
 import { graphql } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
@@ -15,6 +16,9 @@ const AboutTemplate = ({ data }) => {
 
         <AboutCopy dangerouslySetInnerHTML={{ __html: html }} />
       </AboutWrapper>
+      {/* <SocialWrapper>
+        <SocialBar />
+      </SocialWrapper> */}
     </Layout>
   );
 };
@@ -39,6 +43,10 @@ const AboutWrapper = styled.div`
     }
   }
 `;
+
+// const SocialWrapper = styled.div`
+//   margin-top: 25px;
+// `;
 
 const AboutImageWrapper = styled(GatsbyImage)`
   display: block;
