@@ -2,15 +2,23 @@ import styled from 'styled-components';
 import { Container } from '../../common/Container';
 
 export const StyledHeader = styled.header`
-padding-top: var(--size-300);
-background: rgb(255 255 255 / 30%);
-padding: 4px;
+  padding-top: var(--size-300);
+  background: rgb(255 255 255 / 30%);
+  padding: 4px;
+
+  ${({ theme }) =>
+  theme === 'dark' &&
+  `
+    background: #212121;
+    border-bottom: unset;
+    box-shadow: 2px 0 20px 0 rgba(0, 0, 0, 0.2);
+  `}
 `;
 
 export const HeaderWrapper = styled(Container)`
-display: flex;
-align-items: center;
-justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 export const HeaderTitle = styled.div`
@@ -59,4 +67,17 @@ export const StyledNavListItem = styled.li`
     font-size: 0.7rem;
   }
 }
+`;
+
+export const ThemeToggleButton = styled.button`
+  cursor: pointer;
+  border: none;
+  position: relative;
+  top: 0.3rem;
+  background: none;
+  text-align: left;
+
+  img {
+    margin: 0;
+  }
 `;

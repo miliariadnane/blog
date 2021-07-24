@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'gatsby';
+import { ThemeContext } from '../../../providers/ThemeProvider';
+import night from '../../../assets/themeIcon/night.svg';
+import day from '../../../assets/themeIcon/day.svg';
 import { useStaticQuery, graphql } from 'gatsby';
 import {
     StyledHeader,
@@ -8,9 +11,12 @@ import {
     StyledNav,
     StyledNavList,
     StyledNavListItem,
+    ThemeToggleButton
 } from './styles';
 
 export const Header = () => {
+
+  const { theme, toggleTheme } = useContext(ThemeContext);
   
   const { site } = useStaticQuery(
     graphql`
@@ -26,7 +32,7 @@ export const Header = () => {
 
   return (
     <StyledHeader>
-      <HeaderWrapper>
+      <HeaderWrapper theme={theme}>
         <HeaderTitle>
           <Link to="/">{site.siteMetadata.title}</Link>
         </HeaderTitle>
@@ -44,6 +50,10 @@ export const Header = () => {
             <Link to="/contact">Contact</Link>
           </HeaderNavListItem>
 
+          <ThemeToggleButton type="button" onClick={toggleTheme}>
+            <img src={theme === 'dark' ? day : night} alt={theme} />
+          </ThemeToggleButton>
+          
         </HeaderNavList>
       </HeaderWrapper>
     </StyledHeader>
