@@ -5,14 +5,6 @@ export const StyledHeader = styled.header`
   padding-top: var(--size-300);
   background: rgb(255 255 255 / 30%);
   padding: 4px;
-
-  ${({ theme }) =>
-  theme === 'dark' &&
-  `
-    background: #212121;
-    border-bottom: unset;
-    box-shadow: 2px 0 20px 0 rgba(0, 0, 0, 0.2);
-  `}
 `;
 
 export const HeaderWrapper = styled(Container)`
@@ -69,7 +61,7 @@ export const StyledNavListItem = styled.li`
 }
 `;
 
-export const ThemeToggleButton = styled.button`
+export const StyledButton = styled.button`
   cursor: pointer;
   border: none;
   position: relative;
@@ -80,4 +72,4 @@ export const ThemeToggleButton = styled.button`
   img {
     margin: 0;
   }
-`;
+`

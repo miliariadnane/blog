@@ -11,12 +11,10 @@ import {
     StyledNav,
     StyledNavList,
     StyledNavListItem,
-    ThemeToggleButton
+    StyledButton
 } from './styles';
 
 export const Header = () => {
-
-  const { theme, toggleTheme } = useContext(ThemeContext);
   
   const { site } = useStaticQuery(
     graphql`
@@ -29,6 +27,8 @@ export const Header = () => {
       }
     `
   );
+
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
     <StyledHeader>
@@ -50,9 +50,9 @@ export const Header = () => {
             <Link to="/contact">Contact</Link>
           </HeaderNavListItem>
 
-          <ThemeToggleButton type="button" onClick={toggleTheme}>
+          <StyledButton type="button" onClick={toggleTheme}>
             <img src={theme === 'dark' ? day : night} alt={theme} />
-          </ThemeToggleButton>
+          </StyledButton>
           
         </HeaderNavList>
       </HeaderWrapper>
