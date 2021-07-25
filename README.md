@@ -29,5 +29,5 @@ This is based on blog starter : https://github.com/yinkakun/gatsby-starter-glass
 - [x] Share links
 - [x] Bio
 - [ ] Menu Mobile
-- [ ] Dark Mode
+- [x] Dark Mode - Based on the article by smakosh : https://smakosh.com/how-to-add-dark-mode-easily-with-a-custom-react-hook & https://github.com/smakosh/smakosh.com
 - [ ] Add Talk page
