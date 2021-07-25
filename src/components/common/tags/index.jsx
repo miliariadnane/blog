@@ -1,5 +1,6 @@
-import React from 'react';
-import { Link } from 'gatsby';
+import React, { useContext } from 'react';
+import { Link } from "gatsby";
+import { ThemeContext } from '../../../providers/ThemeProvider';
 import { Tag } from './styles';
 
 const toKebabCase = (str) => {
@@ -10,12 +11,15 @@ const toKebabCase = (str) => {
 };
 
 const Tags = ({ tags }) => {
+
+  const { theme } = useContext(ThemeContext);
+
   return (
     <div>
       {tags &&
         tags.map((tag) => {
           return (
-            <Tag key={tag}>
+            <Tag theme={theme} key={tag}>
               <Link to={`/tags/${toKebabCase(tag)}`}>{tag}</Link>
             </Tag>
           );

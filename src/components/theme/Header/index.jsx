@@ -32,7 +32,7 @@ export const Header = () => {
 
   return (
     <StyledHeader>
-      <HeaderWrapper theme={theme}>
+      <HeaderWrapper>
         <HeaderTitle>
           <Link to="/">{site.siteMetadata.title}</Link>
         </HeaderTitle>
@@ -50,7 +50,7 @@ export const Header = () => {
             <Link to="/contact">Contact</Link>
           </HeaderNavListItem>
 
-          <StyledButton type="button" onClick={toggleTheme}>
+          <StyledButton theme={theme} type="button" onClick={toggleTheme}>
             <img src={theme === 'dark' ? day : night} alt={theme} />
           </StyledButton>
           

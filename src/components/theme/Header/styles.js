@@ -10,6 +10,7 @@ export const StyledHeader = styled.header`
 export const HeaderWrapper = styled(Container)`
   display: flex;
   align-items: center;
+  -webkit-box-align: center;
   justify-content: space-between;
 `;
 
@@ -62,13 +63,30 @@ export const StyledNavListItem = styled.li`
 `;
 
 export const StyledButton = styled.button`
+  margin-left: 20px;
+  border: 1px solid black;
   cursor: pointer;
-  border: none;
   position: relative;
+  transition: all 150ms ease 0s;
+  border-radius: 50%;
   top: 0.3rem;
-  background: none;
+  width: 2rem;
+  height: 2rem;
+  padding: 0px;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
   text-align: left;
-
+  -webkit-box-pack: center;
+  justify-content: center;
+  color: rgb(255, 255, 255);
+  background: #f2f3f5;
+  ${({ theme }) =>
+    theme === 'dark' &&
+    `
+    color: rgb(255, 255, 255);
+    background: rgb(19, 20, 21);
+	`};
   img {
     margin: 0;
   }

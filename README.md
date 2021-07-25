@@ -28,5 +28,6 @@ This is based on blog starter : https://github.com/yinkakun/gatsby-starter-glass
 - [x] Disqus comment
 - [x] Share links
 - [x] Bio
+- [ ] Menu Mobile
 - [ ] Dark Mode
 - [ ] Add Talk page

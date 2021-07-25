@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'gatsby';
 import Tags from '../tags';
+import { ThemeContext } from '../../../providers/ThemeProvider';
 import { 
     StyledPostList, 
     StyledPostListItem,
@@ -10,6 +11,7 @@ import {
 } from './styles';
 
 const PostList = ({ posts }) => {
+
   const PostList = posts.map(({ frontmatter, fields, excerpt, timeToRead }) => {
     const { title, tags, date, description } = frontmatter;
     const { slug } = fields;
@@ -42,8 +44,11 @@ const PostListItem = ({
   description,
   slug,
 }) => {
+
+  const { theme } = useContext(ThemeContext);
+  
   return (
-    <StyledPostListItem>
+    <StyledPostListItem theme={theme} >
       <Tags tags={tags} />
 
       <PostListTitle>

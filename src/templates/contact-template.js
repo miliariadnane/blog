@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Layout from '../components/common/Layout';
 import { graphql } from 'gatsby';
 import { useForm } from 'react-hook-form';
@@ -8,16 +8,19 @@ import {
   NetlifyFormComponent,
   Honeypot,
 } from 'react-netlify-forms';
+import { ThemeContext } from '../providers/ThemeProvider';
 import styled from 'styled-components';
 
 const ContactTemplate = ({ data }) => {
+
+  const { theme } = useContext(ThemeContext);
   const { html, frontmatter } = data.markdownRemark;
 
   return (
     <Layout title={frontmatter.title}>
       <ContactWrapper>
         <ContactCopy dangerouslySetInnerHTML={{ __html: html }} />
-        <ContactForm />
+        <ContactForm theme={theme} />
       </ContactWrapper>
     </Layout>
   );
@@ -27,6 +30,7 @@ export default ContactTemplate;
 
 const ContactForm = () => {
   const { register, handleSubmit, errors } = useForm();
+  const { theme } = useContext(ThemeContext);
   const netlify = useNetlifyForm({
     name: 'Contact',
     action: '/thanks',
@@ -99,7 +103,7 @@ const ContactForm = () => {
             )}
           </FormFeedbackWrapper>
 
-          <FormButton type="submit">Send Message</FormButton>
+          <FormButton theme={theme} type="submit">Send Message</FormButton>
         </NetlifyFormComponent>
       </NetlifyFormProvider>
     </FormWrapper>
@@ -209,6 +213,13 @@ const FormButton = styled.button`
   border: 1px solid rgba(255, 255, 255, 0.8);
   text-transform: uppercase;
   border-radius: 4px;
+
+  ${({ theme }) =>
+    theme === 'dark' &&
+    `
+		background: #50a1fc;
+		color: #ffffff;
+	`};
 `;
 
 export const pageQuery = graphql`

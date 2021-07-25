@@ -107,6 +107,13 @@ body {
   background-attachment: fixed;
   background-color: #f2f3f5;
   background-image: linear-gradient(315deg,#d9e4f5 0%,#cedfe96e 74%);
+
+  ${({ theme }) =>
+    theme === 'dark' &&
+    `
+		background: #2b2a2a;
+		color: #fff;
+	`};
 }
 
 h1,

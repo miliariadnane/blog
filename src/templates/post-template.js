@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, graphql } from 'gatsby';
 import { Disqus } from "gatsby-plugin-disqus";
 import Layout from '../components/common/Layout';
 import Tags from '../components/common/tags';
 import Bio from '../components/common/Bio';
 import Share from '../components/common/share';
+import { ThemeContext } from '../providers/ThemeProvider';
 import styled from 'styled-components';
 
 const Post = ({ data }) => {
+  const { theme } = useContext(ThemeContext);
   const { frontmatter, excerpt, html, fields } = data.markdownRemark;
   const prev = data.prev;
   const next = data.next;
@@ -34,7 +36,7 @@ const Post = ({ data }) => {
           <PostContent dangerouslySetInnerHTML={{ __html: html }} />
         </article>
 
-        <PostPagination>
+        <PostPagination theme={theme}>
           {prev && (
             <div>
               <span>previous</span>
@@ -149,7 +151,6 @@ const PostPagination = styled.nav`
   display: flex;
   flex-wrap: wrap;
   margin-top: var(--size-900);
-
   & > * {
     position: relative;
     flex: 1;
@@ -163,10 +164,22 @@ const PostPagination = styled.nav`
     background-color: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(10px);
     margin: 0.5rem;
+    ${({ theme }) =>
+    theme === 'dark' &&
+    `
+      background-color: #50a1fc;
+      color: #ffffff;
+    `};
   }
 
   & > *:hover {
     background-color: rgba(255, 255, 255, 0.5);
+    ${({ theme }) =>
+    theme === 'dark' &&
+    `
+      background-color: #6b7c8e;
+      color: #fff;
+    `};
   }
 
   & span {

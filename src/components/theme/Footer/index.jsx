@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'gatsby';
 import SocialLinks from '../../common/socialLinks';
-import gatsbyIcon from '../../../assets/footer/gatsby.svg'
-import githubIcon from '../../../assets/footer/github.svg'
+import { ThemeContext } from '../../../providers/ThemeProvider';
+import gatsbyIcon from '../../../assets/footer/gatsby.svg';
+import githubLightIcon from '../../../assets/footer/github/light.svg';
+import githubDarkIcon from '../../../assets/footer/github/dark.svg';
 import {
     StyledFooter,
     FooterWrapper,
@@ -11,6 +13,9 @@ import {
 } from './styles';
 
 export const Footer = () => {
+
+  const { theme } = useContext(ThemeContext);
+
   return (
     <StyledFooter>
       <FooterWrapper>
@@ -35,7 +40,10 @@ export const Footer = () => {
               rel="noopener noreferrer" 
               target="_blank"
           > 
-            <Item src={githubIcon} img alt="Github icon" />
+            <Item 
+              src={theme === 'light' ? githubLightIcon : githubDarkIcon}
+              img 
+              alt="Github icon" />
           </a>
         </FooterAttribution>
       </FooterWrapper>

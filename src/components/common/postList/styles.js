@@ -27,7 +27,18 @@ border-radius: 8px;
 
 &:hover {
   background-color: rgba(255, 255, 255, 0.5);
+  ${({ theme }) =>
+    theme === 'dark' &&
+    `
+    background-color: #2e2c2c80;
+  `};
 }
+
+${({ theme }) =>
+  theme === 'dark' &&
+  `
+  background-color: #5a58584d;
+`};
 
 @media screen and (max-width: 500px) {
   & {
@@ -65,9 +76,9 @@ font-size: var(--size-400);
 `;
 
 export const PostListMeta = styled.div`
-margin-top: 2rem;
-
-font-size: var(--size-300);
-display: flex;
-justify-content: space-between;
+  ${({ theme }) =>
+    theme === 'dark' &&
+    `
+		background-color: #2b2a2a;
+	`};
 `;

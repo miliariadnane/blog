@@ -1,14 +1,18 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import SEO from '../SEO';
 import { Header, Footer } from '../../theme';
 import { Container } from '../Container';
 import GlobalStyle from './global-styles';
+import { ThemeContext } from '../../../providers/ThemeProvider';
 import { LayoutWrapper } from './styles';
 
 const Layout = ({ children, title, description, socialImage = '' }) => {
+
+  const { theme } = useContext(ThemeContext);
+
   return (
     <Fragment>
-      <GlobalStyle />
+      <GlobalStyle theme={theme} />
       <SEO title={title} description={description} socialImage={socialImage} />
       <LayoutWrapper>
         <Header />
