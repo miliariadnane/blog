@@ -24,19 +24,23 @@ export const HeaderTitle = styled.div`
 `;
 
 export const StyledNav = styled.nav`
-position: static;
-padding: 0;
-background: transparent;
-backdrop-filter: unset;
+  position: static;
+  padding: 0;
+  background: transparent;
+  backdrop-filter: unset;
 `;
 
 export const StyledNavList = styled.ul`
-display: flex;
-align-items: center;
-flex-wrap: wrap;
-justify-content: space-around;
-padding: 0;
-list-style-type: none;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0;
+  list-style-type: none;
+  @media (max-width: 960px) {
+    flex-direction: column;
+    align-self: center;
+  }
 `;
 
 export const StyledNavListItem = styled.li`
@@ -64,6 +68,7 @@ export const StyledNavListItem = styled.li`
 
 export const StyledButton = styled.button`
   margin-left: 20px;
+  margin-bottom: 8px;
   border: 1px solid black;
   cursor: pointer;
   position: relative;
@@ -88,6 +93,10 @@ export const StyledButton = styled.button`
     background: rgb(19, 20, 21);
 	`};
   img {
+    margin: 0;
+  }
+  @media (max-width: 960px) {
+    flex-direction: column;
     margin: 0;
   }
 `

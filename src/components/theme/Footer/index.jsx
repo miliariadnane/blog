@@ -9,7 +9,8 @@ import {
     StyledFooter,
     FooterWrapper,
     FooterAttribution,
-    Item
+    Item,
+    CopyrightsLinks
 } from './styles';
 
 export const Footer = () => {
@@ -21,30 +22,32 @@ export const Footer = () => {
       <FooterWrapper>
         <SocialLinks />
         <FooterAttribution>
-        ©{' '}
-        <Item as={Link} to="/">
-          MILIARI ADNANE
-        </Item>{' '}
-        {`${new Date().getFullYear()} `}
-          Built with
-          <a 
-              href="https://www.gatsbyjs.org" 
-              rel="noopener noreferrer" 
-              target="_blank"
-          >
-            <Item src={gatsbyIcon} img alt="Gatsby icon" />
-          </a>
-          Open sourced on {' '}
-          <a 
-              href="https://github.com/miliariadnane/miliari.me" 
-              rel="noopener noreferrer" 
-              target="_blank"
-          > 
-            <Item 
-              src={theme === 'light' ? githubLightIcon : githubDarkIcon}
-              img 
-              alt="Github icon" />
-          </a>
+          <CopyrightsLinks>
+            ©{' '}
+            <Item as={Link} to="/">
+              MILIARI ADNANE
+            </Item>{' '}
+            {`${new Date().getFullYear()} `}
+              Built with
+              <a 
+                  href="https://www.gatsbyjs.org" 
+                  rel="noopener noreferrer" 
+                  target="_blank"
+              >
+                <Item src={gatsbyIcon} img alt="Gatsby icon" />
+              </a>
+              Open sourced on {' '}
+              <a 
+                  href="https://github.com/miliariadnane/miliari.me" 
+                  rel="noopener noreferrer" 
+                  target="_blank"
+              > 
+                <Item 
+                  src={theme === 'light' ? githubLightIcon : githubDarkIcon}
+                  img 
+                  alt="Github icon" />
+              </a>
+          </CopyrightsLinks>
         </FooterAttribution>
       </FooterWrapper>
     </StyledFooter>
