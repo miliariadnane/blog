@@ -2,7 +2,7 @@
 title: Spring Security token authentication using JWT
 date: 2021-08-01
 tags: [Spring Boot, Spring Security, JWT]
-social_image: './rocket.jpg'
+social_image: './jwt-security.jpg'
 ---
 
 A few months, I had a discussion with a team colleague concerning securing Rest services in spring boot and the way to manage users Authentication/Authorization. The first thing that jumped to our conversation was the JWT method, and the operating mode of the filters within the architecture, I mean here ''AuthenticationFilter'' and ''Authorization Filter''.
