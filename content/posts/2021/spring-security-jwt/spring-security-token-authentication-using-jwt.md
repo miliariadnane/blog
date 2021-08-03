@@ -1,7 +1,7 @@
 ---
 title: Spring Security token authentication using JWT
 date: 2021-08-01
-tags: [Spring Boot, Spring Security, JWT]
+tags: [Java, Spring Boot, Spring Security, JWT]
 social_image: './jwt-security.jpg'
 ---
 
@@ -14,8 +14,6 @@ Before we get into the implementation of JWT in the spring boot framework of jav
 JSON Web Token (JWT) is an open standard (RFC 7519) wich transmitting information between parties as JSON object. 
 
 In the past, the stateless nature of HTTP was circumvented in a web application by associating each request with a session ID created on the server and then stored by the client using cookies. Each request sends the cookie (session ID) in the form of an HTTP header, which gets validated by the server, and a state (a user session) is associated with each request. In modern applications, a server-side session ID is replaced with the JWT. The following diagram shows the workings of the JWT:
-
-## Image
 
 ![the workings of the JWT](./jwt-1.PNG)
 
@@ -30,14 +28,10 @@ Unlike common security mechanisms, such as encryption, obscuring, and hiding, th
 The structure of the JWT consists of a header, payload, and a signature
   # JWT = header.payload.signature
 
-## Image
-
 ![JWT Structure](./jwt-2.PNG)
 
 ## Part 3: Hello Spring Security
 
 In the figure, we can see the main actors in the Spring Security architecture and the relationships among these. In the demo project, I will implement this architecture. But before we should explain the relationships among the entities that are part of the authentication and especially the part of filters and configuration class.
-
-## Image
 
 ![Spring Security architecture](./spring-security-arch.PNG)

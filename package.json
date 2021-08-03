@@ -43,6 +43,9 @@
   "homepage": "https://github.com/miliariadnane/miliari.me#readme",
   "keywords": [
     "gatsby",
+    "miliari",
+    "personal",
+    "blog",
     "netlify cms"
   ],
   "license": "MIT",
