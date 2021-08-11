@@ -2,10 +2,10 @@
 title: Securing Spring Boot Microservices with JWT
 date: 2021-08-01
 tags: [Java, Spring Boot, Spring Security, JWT, Angular]
-social_image: './jwt-security-social.png'
+social_image: './spring-security-social.png'
 ---
 
-![JWT Spring Boot illustration from toptal](./jwt-security-social.png)
+![JWT Spring Boot illustration from toptal](./spring-security-social.png)
 
 A few months, I had a discussion with a team colleague concerning securing Rest services in spring boot and the way to manage users Authentication/Authorization. The first thing that jumped to our conversation was the JWT method, and the operating mode of the filters within the architecture, I mean here ''AuthenticationFilter'' and ''Authorization Filter''.
 
