@@ -1,9 +1,11 @@
 ---
-title: Spring Security token authentication using JWT
+title: Securing Spring Boot Microservices with JWT
 date: 2021-08-01
-tags: [Java, Spring Boot, Spring Security, JWT]
-social_image: './jwt-security.jpg'
+tags: [Java, Spring Boot, Spring Security, JWT, Angular]
+social_image: './jwt-security-social.png'
 ---
+
+![JWT Spring Boot illustration from toptal](./jwt-security-social.png)
 
 A few months, I had a discussion with a team colleague concerning securing Rest services in spring boot and the way to manage users Authentication/Authorization. The first thing that jumped to our conversation was the JWT method, and the operating mode of the filters within the architecture, I mean here ''AuthenticationFilter'' and ''Authorization Filter''.
 
@@ -35,3 +37,7 @@ The structure of the JWT consists of a header, payload, and a signature
 In the figure, we can see the main actors in the Spring Security architecture and the relationships among these. In the demo project, I will implement this architecture. But before we should explain the relationships among the entities that are part of the authentication and especially the part of filters and configuration class.
 
 ![Spring Security architecture](./spring-security-arch.PNG)
+
+## Part 4: Show me the code 
+
+So enough with the theory; let’s get down to some actual code. I have created a small project [demo project](https://github.com/miliariadnane/spring-boot-security-jwt) that showcases the signed JWT using spring boot with a client side using angular !
