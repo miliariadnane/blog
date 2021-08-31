@@ -1,7 +1,7 @@
 ---
-title: Securing Spring Boot Microservices with JWT
+title: Securing Spring Boot Microservices with JWT 
 date: 2021-08-01
-tags: [Java, Spring Boot, Spring Security, JWT, Angular]
+tags: [Spring Boot, Spring Security, JWT]
 social_image: './spring-security-social.png'
 ---
 

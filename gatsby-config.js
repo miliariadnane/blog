@@ -1,11 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: `MILIARI  |  Networking is about giving 🤝`,
+    title: `MILIARI  |  More writing leads to more learning 🤝`,
     author: {
       name: `MILIARI Adnane`,
       summary: `I'm MILIARI Adnane`,
     },
-    description: `I'm full-stack developer, currently specialising in development of web application with Java and PHP`,
+    description: `I am a software developer and a student, currently learning about machine learning and deep learning and other topics other than software engineering.`,
     siteUrl: `https://miliari.me`,
     social: {
       twitter: `adnane_miliari`,

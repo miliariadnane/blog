@@ -4,9 +4,15 @@ template: about-template
 profile_image: ./media/profile-image.JPG
 ---
 
-# Hi, I'm MILIARI Adnane, also known as Nano
+<h1>Hi, I'm MILIARI Adnane, also known as Nano</h1>
+<br />
 
-This website is a live example of a Gatsby Starter — it's not a real blog.
-People using this starter may want to add some information to this page about them or their business.
+<p>I'm a Software Engineer from Morocco 🇲🇦 highly motivated, dynamic, persevering, rigorous. I'm passionate about Web Development, Machine Learning and Deep Learning.</p>
+<br />
+
+<p>When I am not coding you can find me playing football or having fun with friends.</p>
+<br />
+
+<p>I'm also a Speciality Tea drinking geek 🍵.<p>
 
 
