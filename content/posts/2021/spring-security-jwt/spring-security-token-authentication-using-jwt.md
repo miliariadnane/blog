@@ -84,8 +84,8 @@ protected void successfulAuthentication(HttpServletRequest req,
 
     String userName = user.getUsername();
 
-    /* context is a mecanism give us the possiblity to retrieve in any place in the app as a "bean" */
-    /* we should declare the context in the / of the project */
+    // context is a mecanism give us the possiblity to retrieve in any place in the app as a "bean" 
+    // we should declare the context in the / of the project
     UserService userService = (UserService) SpringApplicationContext.getBean("userServiceImpl");
 
     UserDto userDto = userService.getUser(userName);
