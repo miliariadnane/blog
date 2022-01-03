@@ -1,14 +1,14 @@
 module.exports = {
   siteMetadata: {
-    title: `MILIARI  |  More writing leads to more learning 🤝`,
+    title: `Miliari | More writing leads to more learning 🤝`,
     author: {
       name: `MILIARI Adnane`,
       summary: `I'm MILIARI Adnane`,
     },
-    description: `I am a software developer and a student, currently learning about machine learning and deep learning and other topics other than software engineering.`,
+    description: `I am a Software Engineer and Java developer, currently learning about machine learning and deep learning and other topics other than software engineering.`,
     siteUrl: `https://miliari.me`,
     social: {
-      twitter: `adnane_miliari`,
+      twitter: `miliariadnane`,
       github: 'miliariadnane',
       medium: 'miliari.adnane',
       linkedIn: 'adnane-miliari-776625114',
@@ -20,7 +20,7 @@ module.exports = {
       },
       {
         name: 'twitter',
-        url: 'https://twitter.com/adnane_miliari',
+        url: 'https://twitter.com/miliariadnane',
       },
       {
         name: 'linkedIn',

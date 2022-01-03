@@ -1,11 +1,11 @@
 ---
-title: Securing Spring Boot Microservices with JWT 
+title: Securing Spring Boot Microservices with JWT - jsonwebtoken library
 date: 2021-08-01
 tags: [Spring Boot, Spring Security, JWT]
 social_image: './spring-security-social.png'
 ---
 
-![JWT Spring Boot illustration from toptal](./spring-security-social.png)
+> Photo by [JWT Spring Boot illustration by topta](https://www.toptal.com/java/rest-security-with-jwt-spring-security-and-java)
 
 A few months, I had a discussion with a team colleague concerning securing Rest services in spring boot and the way to manage users Authentication/Authorization. The first thing that jumped to our conversation was the JWT method, and the operating mode of the filters within the architecture, I mean here ''AuthenticationFilter'' and ''Authorization Filter''.
 
@@ -38,6 +38,107 @@ In the figure, we can see the main actors in the Spring Security architecture an
 
 ![Spring Security architecture](./spring-security-arch.PNG)
 
-## Part 4: Show me the code 
+## Part 4: Show me the code !
 
 So enough with the theory; let’s get down to some actual code. I have created a small project [demo project](https://github.com/miliariadnane/spring-boot-security-jwt) that showcases the signed JWT using spring boot with a client side using angular !
+
+As I have mentionned in the title of the blog, I have use the [jsonwebtoken](https://github.com/jwtk/jjwt9) library to implement the JWT.
+
+First thing first, we should create an authentication filter, that will check if the credentails are valid (using the attemptAuthentication method) and if so, it will build a token and send it to the client, as follow:
+
+```java
+/* check authentication of the user */
+@Override
+public Authentication attemptAuthentication(HttpServletRequest req, HttpServletResponse res)
+            throws AuthenticationException {
+  try {
+
+      /* UserLoginRequest contain email & password (class in requests package) */
+
+      UserLoginRequest creds = new ObjectMapper().readValue(req.getInputStream(), UserLoginRequest.class);
+
+      return authenticationManager.authenticate(
+              new UsernamePasswordAuthenticationToken(creds.getEmail(), creds.getPassword()));
+
+  } catch (IOException e) {
+      throw new RuntimeException(e);
+  }
+}
+
+/* When a user sign in in with a correct username and password, the authentication manager will create a token and send it to the client */
+@Override
+protected void successfulAuthentication(HttpServletRequest req,
+                                        HttpServletResponse res,
+                                        FilterChain chain,
+                                        Authentication auth) throws IOException, ServletException {
+
+    User user = ((User) auth.getPrincipal());
+
+    Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();
+
+    ArrayList<String> authsList = new ArrayList<>(authorities.size());
+
+    for (GrantedAuthority authority : authorities) {
+        authsList.add(authority.getAuthority());
+    }
+
+    String userName = user.getUsername();
+
+    /* context is a mecanism give us the possiblity to retrieve in any place in the app as a "bean" */
+    /* we should declare the context in the / of the project */
+    UserService userService = (UserService) SpringApplicationContext.getBean("userServiceImpl");
+
+    UserDto userDto = userService.getUser(userName);
+
+    /* build token */
+    String token = Jwts.builder()
+            .setSubject(userName)
+            .claim("id", userDto.getId())
+            .claim("Role", auth.getAuthorities().stream().map(u->u.getAuthority()).collect(Collectors.toList()))
+            .setExpiration(new Date(System.currentTimeMillis() + SecurityConstants.EXPIRATION_TIME)) 
+            .signWith(SignatureAlgorithm.HS512, SecurityConstants.TOKEN_SECRET )
+            .compact();
+
+    res.addHeader(SecurityConstants.HEADER_STRING, SecurityConstants.TOKEN_PREFIX + token);
+    res.addHeader("user_id", userDto.getUserId());
+    res.getWriter().write("{\"token\": \""+ token + "\", \"id\": \""+userDto.getUserId()+"\"}");
+}
+```
+
+The second thing is to create a filter that will validate the JWT token and if it is valid, it will set the user principal in the security context, it's exaclty the authorization filter that will do this :
+
+```java
+@Override
+protected void doFilterInternal(HttpServletRequest req,
+                                HttpServletResponse res,
+                                FilterChain chain) throws IOException, ServletException {
+
+    // test if req contain header with HEADER_STRING(Authorization)
+    String header = req.getHeader(SecurityConstants.HEADER_STRING);
+
+    // if null or doesn't conatin TOKEN_PREFIX 
+    if (header == null || !header.startsWith(SecurityConstants.TOKEN_PREFIX)) {
+        chain.doFilter(req, res);
+        return;
+    }
+
+    UsernamePasswordAuthenticationToken authentication = getAuthentication(req);
+    // if the user has valid token, allow pricing the request by adding the user to the security context
+    SecurityContextHolder.getContext().setAuthentication(authentication);
+    chain.doFilter(req, res);
+}
+```
+
+So now that we have the authentication filter and the authorization filter, we can create the main class (WebSecurity class) that will call those two filters in configuration process, also it will handle the /user/login route for signing:
+
+```java
+protected AuthenticationFilter getAuthenticationFilter() throws Exception{
+  final AuthenticationFilter filter = new AuthenticationFilter(authenticationManager());
+  filter.setFilterProcessesUrl("/users/login");
+  return filter;
+}
+```
+
+Now that we have security layer ready, we can verify the authentication using a REST client like Insomnia.
+
+If you have any suggestion, questions or remarks, please feel free to comment below.
