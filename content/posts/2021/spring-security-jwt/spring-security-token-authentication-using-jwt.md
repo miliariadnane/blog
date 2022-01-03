@@ -5,7 +5,8 @@ tags: [Spring Boot, Spring Security, JWT]
 social_image: './spring-security-social.png'
 ---
 
-> Photo by [JWT Spring Boot illustration by topta](https://www.toptal.com/java/rest-security-with-jwt-spring-security-and-java)
+![JWT Spring Boot illustration by toptal](./jwt-security-social.png)
+> Photo by [JWT Spring Boot illustration by toptal](https://www.toptal.com/java/rest-security-with-jwt-spring-security-and-java)
 
 A few months, I had a discussion with a team colleague concerning securing Rest services in spring boot and the way to manage users Authentication/Authorization. The first thing that jumped to our conversation was the JWT method, and the operating mode of the filters within the architecture, I mean here ''AuthenticationFilter'' and ''Authorization Filter''.
 
