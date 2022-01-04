@@ -7,7 +7,7 @@ social_image: './MAIN-01.png'
 
 ![Intro](./MAIN-01.png)
 
-the concept #09, is an idea in which I try to give a simplified explanation of the concepts of artificial intelligence and machine learning, in a somewhat superficial way, in order to simplify the notions. The division will be as follows:
+The #09 concept, is an idea in which I try to give a simplified explanation of the main notions in artificial intelligence and machine learning, in a somewhat superficial way. The division will be as follows:
 
 [01#Big_Data]
 [02#History]
