@@ -1,5 +1,5 @@
 ---
-title: Securing Spring Boot application with Spring Security and JWT - demo with JWT.IO dependency 
+title: Securing Spring Boot application with Spring Security and JWT - demo using JWT.IO dependency 
 date: 2021-08-01
 tags: [Spring Boot, Spring Security, JWT]
 social_image: './spring-security-jwt.png'

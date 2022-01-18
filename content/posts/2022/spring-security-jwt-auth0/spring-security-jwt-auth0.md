@@ -1,5 +1,5 @@
 ---
-title: Spring Security & JWT - demo with auth0 dependency 
+title: Spring Security & JWT - demo using auth0 dependency 
 date: 2022-01-18
 tags: [Spring Boot, Spring Security, JWT]
 social_image: './spring-security-jwt-auth0.png'
