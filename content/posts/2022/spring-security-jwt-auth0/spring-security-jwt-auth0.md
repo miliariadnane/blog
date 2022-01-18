@@ -192,23 +192,33 @@ We can start looking at our project structure:
   4. Create JWT and send it in response
 
   ```java
-    @PostMapping("/login")
-    public ResponseEntity<User> login(@RequestBody User user) {
-      authenticate(user.getUsername(), user.getPassword());
-      User loginUser = userService.findUserByUsername(user.getUsername());
-      UserPrincipal userPrincipal = new UserPrincipal(loginUser);
-      HttpHeaders jwtHeader = getJwtHeader(userPrincipal);
-      return new ResponseEntity<>(loginUser, jwtHeader, OK);
+  @Component
+  public class JWTTokenProvider {
+    public String generateJwtToken(UserPrincipal userPrincipal) {
+        String[] claims = getClaimsFromUser(userPrincipal);
+        return JWT.create().withIssuer(NANO_LLC).withAudience(NANO_SPRINGSECURITY_DEMO)
+                .withIssuedAt(new Date()).withSubject(userPrincipal.getUsername())
+                .withArrayClaim(AUTHORITIES, claims).withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
+                .sign(HMAC512(TOKEN_SECRET.getBytes()));
     }
 
-    private HttpHeaders getJwtHeader(UserPrincipal user) {
-      HttpHeaders headers = new HttpHeaders();
-      headers.add(JWT_TOKEN_HEADER, jwtTokenProvider.generateJwtToken(user));
-      return headers;
+    // permit to get authorities from the token
+    public List<GrantedAuthority> getAuthorities(String token) {
+        String[] claims = getClaimsFromToken(token);
+        return stream(claims).map(SimpleGrantedAuthority::new).collect(Collectors.toList());
     }
 
-    private void authenticate(String username, String password) {
-      authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+    public Authentication getAuthentication(String username, List<GrantedAuthority> authorities, HttpServletRequest request) {
+        UsernamePasswordAuthenticationToken userPasswordAuthToken = new
+                UsernamePasswordAuthenticationToken(username, null, authorities);
+        // set details of users in spring security details
+        userPasswordAuthToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+        return userPasswordAuthToken;
+    }
+
+    public boolean isTokenValid(String username, String token) {
+        JWTVerifier verifier = getJWTVerifier();
+        return StringUtils.isNotEmpty(username) && !isTokenExpired(verifier, token);
     }
 
     ...
