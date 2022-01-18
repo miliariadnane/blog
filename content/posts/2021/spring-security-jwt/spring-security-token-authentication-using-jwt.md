@@ -1,12 +1,11 @@
 ---
-title: Securing Spring Boot application with JWT - jsonwebtoken library 
+title: Securing Spring Boot application with Spring Security and JWT - demo with JWT.IO dependency 
 date: 2021-08-01
 tags: [Spring Boot, Spring Security, JWT]
-social_image: './spring-security-social.png'
+social_image: './spring-security-jwt.png'
 ---
 
-![JWT Spring Boot illustration by toptal](./spring-security-social.png)
-> Photo by [JWT Spring Boot illustration by toptal](https://www.toptal.com/java/rest-security-with-jwt-spring-security-and-java)
+![JWT - Spring Security illustration](./spring-security-jwt.png)
 
 A few months, I had a discussion with a team colleague concerning securing Rest services in spring boot and the way to manage users Authentication/Authorization. The first thing that jumped to our conversation was the JWT method, and the operating mode of the filters within the architecture, I mean here ''AuthenticationFilter'' and ''Authorization Filter''.
 
@@ -41,29 +40,47 @@ In the figure, we can see the main actors in the Spring Security architecture an
 
 ## Part 4: Show me the code !
 
-So enough with the theory; let’s get down to some actual code. I have created a small project [demo project](https://github.com/miliariadnane/spring-boot-security-jwt) that showcases the signed JWT using spring boot with a client side using angular !
+So enough with the theory; let’s get down to some actual code. I have created a small project [demo project](https://github.com/miliariadnane/spring-boot-security-jwt) that showcases the signed JWT using spring boot with a client-side using angular !
 
-As I have mentionned in the title of the blog, I have use the [jsonwebtoken](https://github.com/jwtk/jjwt9) library to implement the JWT.
+> As I have mentioned in the title of the blog, We'll use the [jsonwebtoken.io](https://github.com/jsonwebtoken/jsonwebtoken.github.io) library to implement the JWT.
 
-First thing first, we should create an authentication filter, that will check if the credentails are valid (using the attemptAuthentication method) and if so, it will build a token and send it to the client, as follow:
+Now that we have an idea of how the client-server interaction works, we can start looking at our project structure:
+
+![Project Structure](./project-structure.png)
+
+### Implementation
+### 4.1. Maven configuration of jwt :
+
+```xml
+<dependency>
+  <groupId>io.jsonwebtoken</groupId>
+  <artifactId>jjwt</artifactId>
+  <version>0.9.1</version>
+</dependency>
+```	
+### 4.2. Security Configuration and filters
+
+* Authentication Filter :
+
+First thing first, we should create an authentication filter, that will check if the credentials are valid (using the attemptAuthentication method) and if so, it will build a token and send it to the client, as follows:
 
 ```java
 /* check authentication of the user */
 @Override
 public Authentication attemptAuthentication(HttpServletRequest req, HttpServletResponse res)
             throws AuthenticationException {
-  try {
+    try {
 
-      /* UserLoginRequest contain email & password (class in requests package) */
+        /* UserLoginRequest contain email & password (class in requests package) */
 
-      UserLoginRequest creds = new ObjectMapper().readValue(req.getInputStream(), UserLoginRequest.class);
+        UserLoginRequest creds = new ObjectMapper().readValue(req.getInputStream(), UserLoginRequest.class);
 
-      return authenticationManager.authenticate(
-              new UsernamePasswordAuthenticationToken(creds.getEmail(), creds.getPassword()));
+        return authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(creds.getEmail(), creds.getPassword()));
 
-  } catch (IOException e) {
-      throw new RuntimeException(e);
-  }
+    } catch (IOException e) {
+        throw new RuntimeException(e);
+    }
 }
 
 /* When a user sign in in with a correct username and password, the authentication manager will create a token and send it to the client */
@@ -73,38 +90,39 @@ protected void successfulAuthentication(HttpServletRequest req,
                                         FilterChain chain,
                                         Authentication auth) throws IOException, ServletException {
 
-    User user = ((User) auth.getPrincipal());
+      User user = ((User) auth.getPrincipal());
 
-    Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();
+      Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();
 
-    ArrayList<String> authsList = new ArrayList<>(authorities.size());
+      ArrayList<String> authsList = new ArrayList<>(authorities.size());
 
-    for (GrantedAuthority authority : authorities) {
-        authsList.add(authority.getAuthority());
-    }
+      for (GrantedAuthority authority : authorities) {
+          authsList.add(authority.getAuthority());
+      }
 
-    String userName = user.getUsername();
+      String userName = user.getUsername();
 
-    // context is a mecanism give us the possiblity to retrieve in any place in the app as a "bean" 
-    // we should declare the context in the / of the project
-    UserService userService = (UserService) SpringApplicationContext.getBean("userServiceImpl");
+      // context is a mecanism give us the possiblity to retrieve in any place in the app as a "bean" 
+      // we should declare the context in the / of the project
+      UserService userService = (UserService) SpringApplicationContext.getBean("userServiceImpl");
 
-    UserDto userDto = userService.getUser(userName);
+      UserDto userDto = userService.getUser(userName);
 
-    /* build token */
-    String token = Jwts.builder()
-            .setSubject(userName)
-            .claim("id", userDto.getId())
-            .claim("Role", auth.getAuthorities().stream().map(u->u.getAuthority()).collect(Collectors.toList()))
-            .setExpiration(new Date(System.currentTimeMillis() + SecurityConstants.EXPIRATION_TIME)) 
-            .signWith(SignatureAlgorithm.HS512, SecurityConstants.TOKEN_SECRET )
-            .compact();
+      /* build token */
+      String token = Jwts.builder()
+              .setSubject(userName)
+              .claim("id", userDto.getId())
+              .claim("Role", auth.getAuthorities().stream().map(u->u.getAuthority()).collect(Collectors.toList()))
+              .setExpiration(new Date(System.currentTimeMillis() + SecurityConstants.EXPIRATION_TIME)) 
+              .signWith(SignatureAlgorithm.HS512, SecurityConstants.TOKEN_SECRET )
+              .compact();
 
-    res.addHeader(SecurityConstants.HEADER_STRING, SecurityConstants.TOKEN_PREFIX + token);
-    res.addHeader("user_id", userDto.getUserId());
-    res.getWriter().write("{\"token\": \""+ token + "\", \"id\": \""+userDto.getUserId()+"\"}");
+      res.addHeader(SecurityConstants.HEADER_STRING, SecurityConstants.TOKEN_PREFIX + token);
+      res.addHeader("user_id", userDto.getUserId());
+      res.getWriter().write("{\"token\": \""+ token + "\", \"id\": \""+userDto.getUserId()+"\"}");
 }
 ```
+* Authorization Filter :
 
 The second thing is to create a filter that will validate the JWT token and if it is valid, it will set the user principal in the security context, it's exaclty the authorization filter that will do this :
 
@@ -140,6 +158,8 @@ protected AuthenticationFilter getAuthenticationFilter() throws Exception{
 }
 ```
 
-Now that we have security layer ready, we can verify the authentication using a REST client like Insomnia.
+Now that we have our security layer ready, we can verify the authentication using a REST client like Insomnia or try to run angular client-side to test all the endpoints.
+
+> Again the full source code can be found here: https://github.com/miliariadnane/spring-boot-security-jwt
 
 If you have any suggestion, questions or remarks, please feel free to comment below.
