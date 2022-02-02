@@ -53,6 +53,6 @@ ASI is the one everyone is worried about since it would be something way smarter
 
 Big thanks to : @rzikidadda 🙏🏼 for his help in editing illustrations.
 
-🚨 : In case you preffer to read same slides in Darija (I recommand to try the experience with darija), just check it in the link below :
+🚨 : In case you preffer to read same slides in Darija (I recommand you to try the experience with darija), just check it in the link below :
 
 https://www.instagram.com/nanorobot_ma/ 
