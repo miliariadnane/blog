@@ -7,7 +7,7 @@ social_image: './svn2git.gif'
 
 ![svn2git illustration](./svn2git.gif)
 
-Recently, my team decided to migrate our control version system from SVN to GIT for many reasons. The main one is to enhance how we manage our code versioning, plus a part where we would manage our Continuous Integration and Delivery using GitLab. While I would mention that many companies are still working with SVN, it seems to me that sooner or later, those companies will migrate to git; they attend just the best moment to start using it.
+Recently, my team decided to migrate our control version system from SVN to GIT for many reasons, the main one is to improve the way in which we manage our code versioning, plus a part where we would manage our Continuous Integration and Delivery using GitLab. While I would mention that many companies still working with SVN, it seems to me that sooner or later those companies will migrate to GIT, they attend just the best moment to start using git.
 
 Before we get into our topic and the main steps to make the migration, I will quickly explain the difference between SVN and git :
 
