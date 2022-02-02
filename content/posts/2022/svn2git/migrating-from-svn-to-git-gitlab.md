@@ -61,6 +61,7 @@ the output of “authors.txt” file should look like this :
 ```	
 miliariadnane = Miliari Adnane <miliariadnane@example.com>
 johndoe = John Doe <johndoe@contact.com>
+...
 ```
 
 ### 3.2. Create a local copy of the repository (cloning the repository) : 
