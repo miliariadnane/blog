@@ -63,7 +63,7 @@ miliariadnane = Miliari Adnane <miliariadnane@example.com>
 johndoe = John Doe <johndoe@contact.com>
 ```
 
-### 3.2. Create a local copy of the repository and clone the project :
+### 3.2. Create a local copy of the repository (cloning the repository) : 
 
 After that, you have prepared the list of authors, and the next step is to create a local copy of the repository with command. But after that, you should specify your use case. 
 
