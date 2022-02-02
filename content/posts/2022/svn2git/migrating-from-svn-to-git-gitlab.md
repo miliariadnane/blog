@@ -112,7 +112,7 @@ After that, you have prepared the list of authors, and the next step is to creat
     git svn clone -s $repo --authors-file=PATH_TO_AUTHORS_FILE
   done
   ```
-### 3.3. Migrate svn repository to gitlab repository :
+### 3.3. Migrate svn repository to gitlab :
 1. Adding your repo as remote origin :
   ```
   git remote add origin git@gitlab.com:<group>/<project>.git
