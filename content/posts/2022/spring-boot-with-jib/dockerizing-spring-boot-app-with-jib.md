@@ -1,13 +1,14 @@
 ---
-title: Dockerizing a Spring Boot Application with JIB
-date: 2022-03-10
+title: Dockerize Spring Boot App using Google Jib
+date: 2022-03-11
 tags: [DevOps, Docker, Java, Jib]
 social_image: './jib-sb.png'
 ---
 
 ![jib-springboot illustration](./jib-sb.png)
+[unsplash photo by Rinson Chory](https://unsplash.com/photos/2vPGGOU-wLA)
 
-Lately I wrote a [post](https://miliari.me/blog/2022/jib/speed-up-your-java-app-image-build-using-jib) about the JIB plug-in! And how it's an enjoyable tool that helps automate the packaging of Java apps. So as a developer? you only care about the artifact and don't have to face the nonsense of docker (maintaining dockerfiles, etc).
+Lately, I wrote a [post](https://miliari.me/blog/2022/jib/speed-up-your-java-app-image-build-using-jib) about the JIB plug-in! And how it's an enjoyable tool that helps automate the packaging of Java apps. So as a developer? you only care about the artifact and don't have to face the nonsense of docker (maintaining dockerfiles, etc).
 
 In this post, I'll describe how easy to containerize spring boot application with JIB, all the steps will be using [maven-jib-plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin).
 
@@ -15,11 +16,11 @@ In this post, I'll describe how easy to containerize spring boot application wit
 
 ### I. Create a spring boot application
 
-This can be done using spring [initializr](https://start.spring.io/), or your desired IDE. The source code of our spring boot application can be found on GitHub [here](https://github.com/miliariadnane/spring-boot-jib). It's just two APIs which print a list of users; One shows the full list of users retrieved from a json file, and the other prints a filtered list with male users.
+This can be done using spring [initializr](https://start.spring.io/), or your desired IDE. The source code of our spring boot application can be found on GitHub [here](https://github.com/miliariadnane/spring-boot-jib). It's just two APIs that print out a list of users; One shows the full list of users retrieved from a json file, and the other prints a filtered list with male users.
 
 ### II. Setting Up jib-maven-plugin in our "POM.xml"
 
-First of all, let’s add the following additions to the properties section of the pom.xml file, which we will need to specify the name of the image to be built as well as the version.
+First of all, let’s add the following additions to the properties section of the pom.xml file, in which we will need to specify the name of the image to be built as well as the version.
 
 ```xml
 <properties>
@@ -28,7 +29,7 @@ First of all, let’s add the following additions to the properties section of t
 </properties>
 ```
 
-Then we define **maven jib plugin** delecrations in the build section using the <**plugins**> tag. We can extend jbi configuration with more configuration options for customizing the image build process :
+Then we define **maven jib plugin** declarations in the build section using the <**plugins**><**/plugins**> tag. We can extend jib configuration with more configuration options for customizing the image build process :
 
 ```xml
 <build>
@@ -58,7 +59,7 @@ The above configuration will build the application image with the following step
   2. Expose the port 8080 from the container to the host (default port is 8080)
   3. Build the image as container image ([OCI format](https://github.com/opencontainers/image-spec))
 
-The next step is to push the image to the container registry (docker hub) or locally using <**profile**> tag. Each profile can be used to push the image to different repositories.
+The next step is to push the image to the container registry (docker hub) or locally using <**profile**><**/profile**> tag. Each profile can be used to push the image to different repositories.
 
 ### III. Push the image to the container registry (docker.io)
 
@@ -119,7 +120,7 @@ The next step is to push the image to the container registry (docker hub) or loc
 </profiles>
 ```
 
-> The above configuration specifies that we are going to push the image with two different tags, one is the latest version in the first <**execution**> tag with the id "push-latest-tag", and the other one has a custom version, which we will specify in maven command later during the build of the image.
+> The above configuration specifies that we are going to push the image with two different tags, one is the latest version in the first <**execution**><**/execution**> tag with the ID "push-latest-tag", and the other one has a custom version, which we will specify in maven command later during the build of the image.
 
 ### IV. Push the image locally
 
@@ -199,7 +200,7 @@ Now we can build the image using the following commands:
 
 ![mvn command to push image to docker registry](./mvn-cmd-2.png)
 
-> **Note:** To run without using jib commands, select your profile from the maven section and run mvn clean install.
+> **Note:** To run without using jib commands, select your profile from the maven section and run "mvn clean install".
 
 ![mvn profiles](./mvn-profiles.png)
 
@@ -213,6 +214,6 @@ We have successfully pushed the image to docker registry also in our local repos
 
 ![test application](./test-app.png)
 
-Source code of github repository can be found [here](https://github.com/miliariadnane/spring-boot-jib).
+Source code of GitHub repository can be found [here](https://github.com/miliariadnane/spring-boot-jib).
 
 Cheers.
