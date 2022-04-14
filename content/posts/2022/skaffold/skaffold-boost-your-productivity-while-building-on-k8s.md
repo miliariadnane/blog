@@ -13,7 +13,7 @@ When it comes to native cloud applications, we notice that we spend much time on
 
 ## Skaffold
 
-[Skaffold](https://skaffold.dev/) is a tool that has come to improve and streamline the build of our java application development workflow on k8s and save significant time for developers by automating most of the work through the deployment. Skaffold is an open-source and command-line project from Google, same as the jib plugin that we have highlighted in our last blogs, the two solutions are dedicated only for java applications.
+[Skaffold](https://skaffold.dev/) is a tool that has come to streamline the continuous development of our java application development workflow on k8s and save significant time for developers by automating most of the work through the deployment. Skaffold is an open-source and command-line project from Google, same as the jib plugin that we have highlighted in our last blogs, the two solutions are dedicated only for java applications.
 
 In this post, I outline the main steps to set up Skaffold on a spring boot application to facilitate continuous development for k8s.
 
@@ -31,14 +31,14 @@ If you’d like to try it by yourself, you can take a look at my source code on 
 
 
 ## Build and deploy the app on Kubernetes with Skaffold and jib
-Before we get into the delays to configure Skaffold and the necessary to build and deploy the app on k8s, I prefer to demonstrate with a desmyfied illustrates how we can automate the development process to save time, plus the benefit that the tool allows the developer to focus just on the business.
+Before we get into the delays to configure Skaffold and the necessary to build and deploy the app on k8s, I prefer to demonstrate with a desmyfied illustration how we can automate the development process to save time, plus the benefit that the tool allows the developer to focus just on the business.
 
 ![java developer day on k8s](./java-dev-day-k8s.png)
 
 As shown in the figure, jib extension allows us to build the docker image and push it across registries without using Dockerfiles. Subsequently, skaffold takes care of everything concerning the update of k8s manifests and the redeployment of the application. So the developer has to deal only with the business part of the app and do tests after deployment.
 
 # Step 1: Build the docker image using JIB plugin
-As we have mentioned in the previous [post](https://miliari.me/blog/2022/jib/speed-up-your-java-app-image-build-using-jib), that jib don’t need to maintain any dockerfiles or even run a docker daemon. To use jib during our applicaiton build we just need to include the plugin to the maven or gradle file as shown below :
+As we have mentioned in the previous [post](https://miliari.me/blog/2022/jib/speed-up-your-java-app-image-build-using-jib), that jib doesn’t need to maintain any dockerfiles or even run a docker daemon. To use jib during our applicaiton build we just need to include the plugin to the maven or gradle file as shown below :
 
 ```xml
 <build>
@@ -62,10 +62,10 @@ As we have mentioned in the previous [post](https://miliari.me/blog/2022/jib/spe
 </build>
 ```
 # Step 2: Create Spring Boot app
-I have created a simple web application that exposes a REST API with a fake data store where I instantiate a static data that return a list of persons (Kabour family members, It's a comedey series in Morocco).
+I have created a simple web application that exposes a REST API with a fake data store where I instantiate static data that return a list of persons (Kabour family members, It's a comedy series in Morocco).
 
 # Step 3: Configure Skaffold
-We must create a yaml file in the project root directory “skaffold.yml”, which contains our configuration where we define the name of the generated docker image using jib.
+We must create a YAML file in the project root directory “skaffold.yml”, which contains our configuration, where we define the name of the generated docker image using jib.
 ```yaml
 apiVersion: skaffold/v1beta15
 kind: Config
@@ -79,12 +79,12 @@ deploy:
     manifests:
       - k8s/*.yaml
 ```
-The configuration file contains two main steps: **the build phase** where we tell skaffold where to genreate the docker image and where to push it, and the  **deploy phase** is about how to deploy the app on k8s.
+The configuration file contains two main steps: **the build phase** where we tell skaffold where to generate the docker image and where to push it, and then  **the deployment phase** is about how to deploy the app on k8s.
 
 # Step 4: Deploy on Kubernetes
-To run our application in kubernetes we need to create a deployment object which will include the replicaset, and a service of type Loadbalancer(LB).
+To run our application in kubernetes we need to create a deployment object which will include the replicaset, and service of type Loadbalancer(LB).
 
-Create a kubernetes folder under the root of your project and within that create a deployment.yaml file with the below content :
+Create a kubernetes folder under the root of your project, and within that create a deployment.yaml file with the below content :
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
