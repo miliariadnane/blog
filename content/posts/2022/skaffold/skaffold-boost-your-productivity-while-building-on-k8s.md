@@ -22,7 +22,7 @@ By default, Skaffold uses Dockerfiles while building an image with our applicati
 ## Prerequisites !
 Before we start, we need to install several tools. Of course, we also need to have a running Kubernetes cluster. We will use the following CLI tools:
 1. Skaffold works great on Windows, MacOS and Linux too, this [link](https://skaffold.dev/docs/install/) describes the necessary steps for installation.
-2. Docker (optional) - **notes**: In our case, we will use Jib which does not require an installed docker engine. But if you're not using the jib, you need docker.
+2. Docker (optional) - **note**: In our case, we will use Jib which does not require an installed docker engine. But if you're not using the jib, you need docker.
 3. Kubectl (optional) - to interact with the Kubernetes cluster. It’s also used by Skaffold
 4. Minikube (optional)
 
