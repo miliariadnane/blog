@@ -67,7 +67,7 @@ I have created a simple web application that exposes a REST API with a fake data
 # Step 3: Configure Skaffold
 We must create a YAML file in the project root directory “skaffold.yml”, which contains our configuration, where we define the name of the generated docker image using jib.
 ```yaml
-apiVersion: skaffold/v1beta15
+apiVersion: skaffold/v1
 kind: Config
 build:
   artifacts:
@@ -94,15 +94,15 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      app: spring-springboot-app
+      app: skaffold-springboot
   template:
     metadata:
       labels:
-        app: spring-springboot-app
+        app: skaffold-springboot
     spec:
       containers:
-        - name: spring-springboot-app
-          image: spring-springboot
+        - name: skaffold-springboot
+          image: skaffold-springboot
           ports:
             - containerPort: 8080
 ```	
@@ -116,11 +116,11 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - port: 8081
+    - port: 8080
       targetPort: 8080
       protocol: TCP
   selector:
-    app: spring-springboot-app
+    app: skaffold-springboot
 ```
 
 Now, you can continuously develop, deploy and test your changes using the fellowing command:
