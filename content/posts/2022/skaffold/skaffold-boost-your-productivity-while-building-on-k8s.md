@@ -130,7 +130,7 @@ Now, you can continuously develop, deploy and test your changes using the fellow
 To test the application in the browser, run the following command:
 > skaffold dev --port-forward
 
-Finally, you see the magic of skaffold in deployment of the app on k8s automatically, try to make some changes on the "FakeDataStore" class and see the changes reflected in the browser.
+Finally, you can see the magic of Skaffold by automating deployment on the K8, try to make some changes on the "FakeDataStore" class where there's static data and see the changes reflected in the browser.
 
 Cheers !
 
