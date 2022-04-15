@@ -123,13 +123,16 @@ spec:
     app: spring-springboot-app
 ```
 
-That's all we need for our app to be deployed on k8s, you are now able to deploy the application with the help of the command below:
-
-> kubectl apply -f deployment.yaml
-
 Now, you can continuously develop, deploy and test your changes using the fellowing command:
 
 > skaffold dev
+
+To test the application in the browser, run the following command:
+> skaffold dev --port-forward
+
+Finally, you see the magic of skaffold in deployment of the app on k8s automatically, try to make some changes on the "FakeDataStore" class and see the changes reflected in the browser.
+
+Cheers !
 
 ## References :
 
